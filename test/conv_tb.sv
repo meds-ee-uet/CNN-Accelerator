@@ -83,7 +83,7 @@ module conv_tb;
         foreach (ifmap[i, j]) begin
             int val;
             if ($fscanf(fd, "%d", val) != 1)
-                $fatal("Read error at [%0d][%0d]", i, j);
+                $fatal(1,"Read error at [%0d][%0d]", i, j);
             ifmap[i][j] = val;
         end
 

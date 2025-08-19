@@ -14,8 +14,8 @@
 `include "cnn_defs.svh"
 
 module comparator(
-        input logic [DATA_WIDTH-1:0] input1, input2, input3, input4,
-        output logic [DATA_WIDTH-1:0] max_val
+        input   logic [DATA_WIDTH-1:0] input1, input2, input3, input4,
+        output  logic [DATA_WIDTH-1:0] max_val
     );
 
     // Intermediate signals

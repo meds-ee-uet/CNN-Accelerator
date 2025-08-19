@@ -7,9 +7,9 @@ BUILD_DIR     := build
 DESIGN_FILES  := $(wildcard $(RTL_DIR)/*.sv)
 # TB_FILES      := $(wildcard $(TB_DIR)/*.sv)
 VCD_FILE      := wave.vcd
-IMG 		  := test/imgs/Madara.jpg
+IMG 		  := test/imgs/Madara.png
 # IMG := ofmap.png
-SIZE := 512x512
+SIZE := 256x256
 
 # Tools
 VLOG          := vlog
@@ -40,7 +40,7 @@ wave:
 
 # Full flow: compile → simulate → view waveforms
 # run: clean sim
-run: clean imgToTxt sim png
+run: clean sim png
 
 # Clean build artifacts
 clean:

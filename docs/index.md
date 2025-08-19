@@ -86,7 +86,9 @@ Orchestrates the entire CNN pipeline:
 `Input → Convolution + ReLU → Max Pooling → Flatten → Output`
 
 **Image:**  
-![Top-Level Accelerator Flow](docs/Diagrams/Architecure.png)
+<div align="center">
+  <img src="docs/Diagrams/Architecure.png" width="600" height="400">
+</div>
 
 >*Figure 1: Top Level Diagram*
 
@@ -104,8 +106,9 @@ Applies a 2D convolution and ReLU activation.
 - ReLU activation built-in  
 - FSM-based operation  
 
-**Image:**
-![Convolution Output](docs/Diagrams/Conv.png)
+<div align="center">
+  <img src="docs/Diagrams/Convolution.png" width="600" height="400">
+</div>
 
 > *Figure 2: Convolution Diagram*
 
@@ -120,8 +123,9 @@ Optimized multiply-accumulate logic for convolution.
 - Adder tree  
 - One-cycle accumulation  
 
-**Image:**
-![MAC Operation](docs/Diagrams/MAC.png)
+<div align="center">
+  <img src="docs/Diagrams/MAC.png" width="600" height="400">
+</div>
 
 > *Figure 3: MAC unit architecture (multipliers + adder tree)*
 
@@ -137,7 +141,9 @@ Performs 2×2 max pooling with stride 2.
 - FSM-controlled state machine  
 
 **Image:**
-![MaxPooling Output](docs/Diagrams/Maxpool.png)
+<div align="center">
+  <img src="docs/Diagrams/Maxpool.png" width="600" height="400">
+</div>
 
 > *Figure 4: Maxpool Diagram*
 
@@ -153,7 +159,9 @@ Selects the maximum of a 2×2 input.
 - Unsigned input handling  
 
 **Image:**
-![Comparator Block](docs/Diagrams/Comparator.png)
+<div align="center">
+  <img src="docs/Diagrams/Comparator.png" width="600" height="400">
+</div>
 
 > *Figure 5: Comparator logic to extract max from 4 inputs*
 
@@ -168,7 +176,9 @@ Converts 2D pooled maps to 1D vectors.
 - Output ready for fully connected layers  
 
 **Image:**
-![Flatten Output](docs/Diagrams/Flatten.png)
+<div align="center">
+  <img src="docs/Diagrams/Flatten.png" width="600" height="400">
+</div>
 
 > *Figure 6: Flatten Diagram*
 
@@ -239,15 +249,21 @@ Defined in `cnn_defs.svh`:
 ## Testbench Results
 
 ### Input Image
-![Input Image](docs/Diagrams/InputOP.png)  
+<div align="center">
+  <img src="docs/Diagrams/InputOP.png" width="600" height="400">
+</div>  
 *Figure: Original grayscale image, 256×256*
 
 ### Convolution Output
-![Convolution Result](docs/Diagrams/ConvOP.png)  
+<div align="center">
+  <img src="docs/Diagrams/ConvOP.png" width="600" height="400">
+</div>  
 *Figure: After 3x3 Laplacian convolution and ReLU*
 
 ### MaxPooling Output
-![MaxPool Result](docs/Diagrams/maxpoolOP.png)  
+<div align="center">
+  <img src="docs/Diagrams/maxpoolOP.png" width="600" height="400">
+</div>  
 *Figure: After 2x2 max pooling (downsampled to 128×128)*
 
 ---
