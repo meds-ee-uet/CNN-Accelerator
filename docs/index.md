@@ -26,6 +26,7 @@
 - [Contact](#contact)
 
 ---
+
 ## Abstract
 
 This project presents a complete hardware implementation of a Convolutional Neural Network (CNN) accelerator using SystemVerilog HDL. The design features modular components for convolution, ReLU activation, max pooling, and flattening operations, optimized for FPGA and ASIC deployment. The accelerator achieves significant performance improvements over software implementations. The design supports configurable parameters and includes real-image testbench demonstrations.
@@ -36,20 +37,18 @@ This project presents a complete hardware implementation of a Convolutional Neur
 
 At a high level, the CNN accelerator mimics the structure of a typical convolutional neural network in hardware. It operates on grayscale image inputs and processes them through several dedicated hardware blocks:
 
-1. **Convolution + ReLU Block**:  
+1. **Convolution + ReLU Block**  
    Applies a sliding window 3×3 kernel to the input image, performing multiply-accumulate (MAC) operations to extract features. The result is passed through a ReLU activation function to zero out negative values.
 
-2. **Max Pooling Block**:  
+2. **Max Pooling Block**  
    Reduces the spatial dimensions of the feature maps using 2×2 max pooling, helping to retain essential features while lowering computational load.
 
-3. **Flatten Block**:  
+3. **Flatten Block**  
    Converts the pooled 2D matrix into a 1D vector that can be directly fed into a classifier or fully connected layer in later stages.
 
 Each operation is fully pipelined and controlled using finite state machines (FSMs) to ensure efficient and parallel execution. The design is parameterized and reusable, making it suitable for both FPGA prototyping and ASIC flows.
 
 ---
-
-
 
 ## Why This Project Matters
 
@@ -85,12 +84,7 @@ Orchestrates the entire CNN pipeline:
 **Flow:**  
 `Input → Convolution + ReLU → Max Pooling → Flatten → Output`
 
-**Image:**  
-<div align="center">
-  <img src="Diagrams/Architecure.png" width="600" height="400">
-</div>
-
->*Figure 1: Top Level Diagram*
+![Figure 1: Top Level Diagram](Diagrams/Architecture.png)
 
 ---
 
@@ -106,11 +100,7 @@ Applies a 2D convolution and ReLU activation.
 - ReLU activation built-in  
 - FSM-based operation  
 
-<div align="center">
-  <img src="Diagrams/Convolution.png" width="600" height="400">
-</div>
-
-> *Figure 2: Convolution Diagram*
+![Figure 2: Convolution Diagram](Diagrams/Convolution.png)
 
 ---
 
@@ -123,11 +113,7 @@ Optimized multiply-accumulate logic for convolution.
 - Adder tree  
 - One-cycle accumulation  
 
-<div align="center">
-  <img src="Diagrams/MAC.png" width="600" height="400">
-</div>
-
-> *Figure 3: MAC unit architecture (multipliers + adder tree)*
+![Figure 3: MAC unit architecture (multipliers + adder tree)](Diagrams/MAC.png)
 
 ---
 
@@ -140,12 +126,7 @@ Performs 2×2 max pooling with stride 2.
 - 3-stage comparator logic  
 - FSM-controlled state machine  
 
-**Image:**
-<div align="center">
-  <img src="Diagrams/Maxpool.png" width="600" height="400">
-</div>
-
-> *Figure 4: Maxpool Diagram*
+![Figure 4: Maxpool Diagram](Diagrams/Maxpool.png)
 
 ---
 
@@ -158,12 +139,7 @@ Selects the maximum of a 2×2 input.
 - Single-cycle output  
 - Unsigned input handling  
 
-**Image:**
-<div align="center">
-  <img src="Diagrams/Comparator.png" width="600" height="400">
-</div>
-
-> *Figure 5: Comparator logic to extract max from 4 inputs*
+![Figure 5: Comparator logic to extract max from 4 inputs](Diagrams/Comparator.png)
 
 ---
 
@@ -175,12 +151,7 @@ Converts 2D pooled maps to 1D vectors.
 - Row-major flattening  
 - Output ready for fully connected layers  
 
-**Image:**
-<div align="center">
-  <img src="Diagrams/Flatten.png" width="600" height="400">
-</div>
-
-> *Figure 6: Flatten Diagram*
+![Figure 6: Flatten Diagram](Diagrams/Flatten.png)
 
 ---
 
@@ -249,30 +220,19 @@ Defined in `cnn_defs.svh`:
 ## Testbench Results
 
 ### Input Image
-<div align="center">
-  <img src="Diagrams/InputOP.png" width="600" height="400">
-</div>  
-*Figure: Original grayscale image, 256×256*
+![Figure: Original grayscale image, 256×256](Diagrams/InputOP.png)
 
 ### Convolution Output
-<div align="center">
-  <img src="Diagrams/ConvOP.png" width="600" height="400">
-</div>  
-*Figure: After 3x3 Laplacian convolution and ReLU*
+![Figure: After 3x3 Laplacian convolution and ReLU](Diagrams/ConvOP.png)
 
 ### MaxPooling Output
-<div align="center">
-  <img src="Diagrams/maxpoolOP.png" width="600" height="400">
-</div>  
-*Figure: After 2x2 max pooling (downsampled to 128×128)*
+![Figure: After 2x2 max pooling (downsampled to 128×128)](Diagrams/maxpoolOP.png)
 
 ---
 
 ## Usage Guidelines
 
 ### Configuration
-
-### Configuring Modules with Parameters
 
 Each module in the CNN accelerator is parameterized to support different image sizes, kernel configurations, and arithmetic precision. You can modify the parameters globally by editing the `cnn_defs.svh` file, or locally during module instantiation.
 
@@ -297,8 +257,6 @@ parameter int PADDING           = 1;
 ```
 
 Adjusting these parameters will automatically scale the functionality and resource usage of the modules accordingly.
-
-
 
 ### Run Flow
 ```systemverilog
@@ -382,7 +340,7 @@ See [LICENSE](LICENSE) for full terms.
 
 **Maktab-e-Digital Systems Lahore**  
 Lahore, Punjab, Pakistan  
-*[\[GitHub Repository Link\]](https://github.com/meds-uet/CNN-Accelerator)*
+[GitHub Repository Link](https://github.com/meds-uet/CNN-Accelerator)
 
 ---
 
